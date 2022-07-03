@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">WSR Food</string>
+    <string name="tab_items">Товары</string>
+    <string name="tab_auctions">Аукционы</string>
+    <string name="login_enter">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="register">Register Now</string>
+    <string name="name">Full name*</string>
+    <string name="number">Phone number*</string>
+    <string name="foods">Foods</string>
+    <string name="drinks">Drinks</string>
+    <string name="snacks">Snacks</string>
+    <string name="sauce">Sauce</string>
+    <string name="user_email">Email*</string>
+    <string name="user_password">Password*</string>
+    <string name="user_enter">Login</string>
+    <string name="user_exit">Exit</string>
+    <string name="create_account">Sign up</string>
+    <string name="tutorial_skip">SKIP</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="house">House*</string>
+    <string name="street">Street*</string>
+    <string name="city">City*</string>
+    <string name="enter_shipping_address">Enter shipping address</string>
+
+</resources>

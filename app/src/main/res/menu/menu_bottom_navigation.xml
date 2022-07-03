@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/nav_find"
+        android:title="Search"/>
+
+    <item
+        android:id="@+id/nav_wish"
+        android:icon="@drawable/nav_book"
+        android:title="Wishlist"/>
+
+    <item
+        android:id="@+id/nav_items"
+        android:icon="@drawable/nav_bag"
+        android:title="Items"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/nav_male"
+        android:title="Profile"/>
+
+</menu>
