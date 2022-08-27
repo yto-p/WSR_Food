@@ -1,136 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="10dp"
-        app:srcCompat="@drawable/rss_icon" />
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/manrope_bold"
-        android:textColor="#333333"
-        android:textSize="20dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/sign_up"/>
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/rss_icon" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginBottom="2dp"
-        app:boxCornerRadiusTopEnd="6dp"
-        app:boxCornerRadiusBottomEnd="6dp"
-        app:boxCornerRadiusBottomStart="6dp"
-        app:boxCornerRadiusTopStart="6dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText"
-            android:textSize="16dp"
-            android:hint="@string/user_email"
-            android:inputType="textEmailAddress"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_bold"
+            android:textColor="#333333"
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/sign_up"/>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginVertical="2dp"
-        android:hint="@string/user_password"
-        app:passwordToggleEnabled="true"
-        app:boxCornerRadiusTopEnd="6dp"
-        app:boxCornerRadiusBottomEnd="6dp"
-        app:boxCornerRadiusBottomStart="6dp"
-        app:boxCornerRadiusTopStart="6dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText2"
-            android:textSize="16dp"
-            android:inputType="textPassword"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="2dp"
+            app:boxCornerRadiusTopEnd="6dp"
+            app:boxCornerRadiusBottomEnd="6dp"
+            app:boxCornerRadiusBottomStart="6dp"
+            app:boxCornerRadiusTopStart="6dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editEmail"
+                android:textSize="16dp"
+                android:hint="@string/user_email"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginBottom="2dp"
-        app:boxCornerRadiusTopEnd="6dp"
-        app:boxCornerRadiusBottomEnd="6dp"
-        app:boxCornerRadiusBottomStart="6dp"
-        app:boxCornerRadiusTopStart="6dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editName"
-            android:textSize="16dp"
-            android:hint="@string/name"
-            android:inputType="textPersonName"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginVertical="2dp"
+            android:hint="@string/user_password"
+            app:passwordToggleEnabled="true"
+            app:boxCornerRadiusTopEnd="6dp"
+            app:boxCornerRadiusBottomEnd="6dp"
+            app:boxCornerRadiusBottomStart="6dp"
+            app:boxCornerRadiusTopStart="6dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginBottom="2dp"
-        app:boxCornerRadiusTopEnd="6dp"
-        app:boxCornerRadiusBottomEnd="6dp"
-        app:boxCornerRadiusBottomStart="6dp"
-        app:boxCornerRadiusTopStart="6dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editPass"
+                android:textSize="16dp"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editNumber"
-            android:textSize="16dp"
-            android:hint="@string/number"
-            android:inputType="number"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="2dp"
+            app:boxCornerRadiusTopEnd="6dp"
+            app:boxCornerRadiusBottomEnd="6dp"
+            app:boxCornerRadiusBottomStart="6dp"
+            app:boxCornerRadiusTopStart="6dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editName"
+                android:textSize="16dp"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="2dp"
+            app:boxCornerRadiusTopEnd="6dp"
+            app:boxCornerRadiusBottomEnd="6dp"
+            app:boxCornerRadiusBottomStart="6dp"
+            app:boxCornerRadiusTopStart="6dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editNumber"
+                android:textSize="16dp"
+                android:hint="@string/number"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/button_corners"
+            android:text="@string/register"
+            style="?android:attr/borderlessButtonStyle"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/button_corners"
+            android:text="@string/cancel"
+            style="?android:attr/borderlessButtonStyle"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        android:textAllCaps="false"
-        android:textSize="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/button_corners"
-        android:text="@string/register"
-        style="?android:attr/borderlessButtonStyle"/>
+        android:visibility="gone"
+        android:layout_gravity="center"/>
 
-    <Button
-        android:id="@+id/btn_cancel"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:textAllCaps="false"
-        android:textSize="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/button_corners"
-        android:text="@string/cancel"
-        style="?android:attr/borderlessButtonStyle"/>
-
-
-</LinearLayout>
+</FrameLayout>

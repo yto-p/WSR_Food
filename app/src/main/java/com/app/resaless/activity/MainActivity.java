@@ -3,24 +3,34 @@ package com.app.resaless.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.resaless.R;
+import com.app.resaless.api.FoodApi;
 import com.app.resaless.dialog.AddressDialog;
 import com.app.resaless.fragment.ItemsFragment;
 import com.app.resaless.fragment.ProfileFragment;
 import com.app.resaless.fragment.SearchFragment;
 import com.app.resaless.fragment.WishFragment;
+import com.app.resaless.item.FoodItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     Toolbar toolbar;
     TextView address;
+    ProgressBar pb;
 
     FragmentTransaction transaction;
 
@@ -35,15 +46,21 @@ public class MainActivity extends AppCompatActivity {
     WishFragment wishFragment;
     ItemsFragment itemsFragment;
     ProfileFragment profileFragment;
+    public SharedPreferences sPref;
+    int token;
+    public MutableLiveData<ArrayList<FoodItem>> foodItems = new MutableLiveData<>(new ArrayList<>());
+    private final FoodApi foodApi = new FoodApi();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initLogic();
         setUserPermissions();
         initViews();
         initFragments();
         initNavigation();
+        getDishes();
         setSupportActionBar(toolbar);
         address.setOnClickListener( v -> {
             AddressDialog addressDialog = new AddressDialog(this, address);
@@ -70,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initViews(){
+        pb = findViewById(R.id.progress_bar);
         frameLayout = findViewById(R.id.frameLayout);
         bottomNavigationView = findViewById(R.id.navigation);
         toolbar = findViewById(R.id.toolbar);
@@ -96,5 +114,33 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
         bottomNavigationView.setSelectedItemId(R.id.nav_search);
+    }
+
+    public void initLogic(){
+        sPref=getSharedPreferences("data", MODE_PRIVATE);
+        token=sPref.getInt(LoginActivity.TOKEN_KEY, 0);
+        if (token == 0){
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
+    }
+
+    public void getDishes(){
+        pb.setVisibility(View.VISIBLE);
+        foodApi.getDishes(new FoodApi.DishesCallback() {
+            @Override
+            public void onSuccess(ArrayList<FoodItem> dishes) {
+                foodItems.postValue(dishes);
+                runOnUiThread(() ->{
+                    pb.setVisibility(View.GONE);
+                });
+            }
+
+            @Override
+            public void onFailure() {
+                runOnUiThread(() ->{
+                    pb.setVisibility(View.GONE);
+                });
+            }
+        });
     }
 }

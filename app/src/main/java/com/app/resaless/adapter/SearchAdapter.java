@@ -21,10 +21,10 @@ public class SearchAdapter extends FragmentStatePagerAdapter {
 
     public SearchAdapter(FragmentManager fm, MainActivity mainActivity, LinearLayout linearLayout) {
         super(fm);
-        foodsFragment = FoodsFragment.newInstance(mainActivity, linearLayout);
-        drinksFragment = DrinksFragment.newInstance(mainActivity, linearLayout);
-        snacksFragment = SnacksFragment.newInstance(mainActivity, linearLayout);
-        sauceFragment = SauceFragment.newInstance(mainActivity, linearLayout);
+        foodsFragment = FoodsFragment.newInstance();
+        drinksFragment = DrinksFragment.newInstance();
+        snacksFragment = SnacksFragment.newInstance();
+        sauceFragment = SauceFragment.newInstance();
     }
 
     @Override

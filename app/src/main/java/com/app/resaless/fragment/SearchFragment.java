@@ -1,5 +1,6 @@
 package com.app.resaless.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,22 +9,30 @@ import android.widget.LinearLayout;
 
 import com.app.resaless.R;
 import com.app.resaless.activity.MainActivity;
+import com.app.resaless.adapter.FoodAdapter;
 import com.app.resaless.adapter.SearchAdapter;
+import com.app.resaless.item.FoodItem;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchFragment extends Fragment {
 
     private View view;
     private LinearLayout linearLayout;
     private TabLayout tabLayout;
-
     private ViewPager viewPager;
     private SearchAdapter searchAdapter;
+
 
     public static SearchFragment newInstance(MainActivity mainActivity, ViewGroup container){
         SearchFragment searchFragment = new SearchFragment();

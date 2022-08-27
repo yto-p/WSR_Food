@@ -24,7 +24,7 @@
                 android:id="@+id/toolbar_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select shipping address"
+                android:text="@string/select_shipping_address"
                 android:gravity="center"
                 android:textColor="#333333"
                 android:textSize="16dp"

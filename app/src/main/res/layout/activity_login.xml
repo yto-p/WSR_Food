@@ -37,7 +37,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText"
+            android:id="@+id/editEmail"
             android:textSize="16dp"
             android:hint="@string/user_email"
             android:inputType="textEmailAddress"
@@ -60,7 +60,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText2"
+            android:id="@+id/editPass"
             android:textSize="16dp"
             android:inputType="textPassword"
             android:layout_width="match_parent"
@@ -68,7 +68,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="40dp"
