@@ -1,11 +1,19 @@
 package com.app.resaless.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.app.resaless.R;
 import com.app.resaless.activity.MainActivity;
@@ -14,40 +22,36 @@ import com.app.resaless.adapter.SearchAdapter;
 import com.app.resaless.item.FoodItem;
 import com.google.android.material.tabs.TabLayout;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SearchFragment extends Fragment {
 
-    private View view;
-    private LinearLayout linearLayout;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private SearchAdapter searchAdapter;
+    public static SearchFragment newInstance(){
+        return new SearchFragment();
+    }
 
-
-    public static SearchFragment newInstance(MainActivity mainActivity, ViewGroup container){
-        SearchFragment searchFragment = new SearchFragment();
-        searchFragment.view = mainActivity.getLayoutInflater().inflate(R.layout.fragment_search, container, false);
-        searchFragment.viewPager = searchFragment.view.findViewById(R.id.viewPager);
-        searchFragment.linearLayout = searchFragment.view.findViewById(R.id.linearLayout);
-        searchFragment.tabLayout = searchFragment.view.findViewById(R.id.tabLayout);
-        searchFragment.searchAdapter = new SearchAdapter(mainActivity.getSupportFragmentManager(), mainActivity, searchFragment.linearLayout);
-        searchFragment.viewPager.setAdapter(searchFragment.searchAdapter);
-        searchFragment.viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(searchFragment.tabLayout));
-        searchFragment.tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = requireActivity().getLayoutInflater().inflate(R.layout.fragment_search, container, false);
+        ViewPager viewPager = view.findViewById(R.id.viewPager);
+        LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
+        TabLayout tabLayout = view.findViewById(R.id.tabLayout);
+        LinearLayout searchContent = view.findViewById(R.id.linearLayout1);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerFood);
+        TextView notFound = view.findViewById(R.id.not_found);
+        recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
+        FoodAdapter foodAdapter = new FoodAdapter(requireActivity());
+        recyclerView.setAdapter(foodAdapter);
+        LinearLayout menuContent = view.findViewById(R.id.linearLayout2);
+        SearchAdapter searchAdapter = new SearchAdapter(requireActivity().getSupportFragmentManager(), (MainActivity) requireActivity(), linearLayout);
+        viewPager.setAdapter(searchAdapter);
+        viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
 
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                searchFragment.viewPager.setCurrentItem(tab.getPosition());
+                viewPager.setCurrentItem(tab.getPosition());
             }
 
             @Override
@@ -60,12 +64,45 @@ public class SearchFragment extends Fragment {
 
             }
         });
-        return searchFragment;
-    }
+        SearchView searchView = view.findViewById(R.id.search);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (newText.equals("")){
+                    menuContent.setVisibility(View.VISIBLE);
+                    searchContent.setVisibility(View.GONE);
+                    return false;
+                }
+                menuContent.setVisibility(View.GONE);
+                searchContent.setVisibility(View.VISIBLE);
+                ArrayList<FoodItem> allItems = ((MainActivity) requireActivity()).foodItems.getValue();
+                if (allItems == null){
+                    allItems = new ArrayList<>();
+                }
+                ArrayList<FoodItem> filteredItems = new ArrayList<>();
+                for (FoodItem foodItem: allItems){
+                    if (foodItem.title.toLowerCase().contains(newText.toLowerCase())){
+                        filteredItems.add(foodItem);
+                    }
+                }
+                if (filteredItems.size() == 0){
+                    notFound.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                } else {
+                    notFound.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
+                }
+                foodAdapter.foodItems = filteredItems;
+                foodAdapter.notifyDataSetChanged();
+
+                return false;
+            }
+        });
         return view;
     }
 }

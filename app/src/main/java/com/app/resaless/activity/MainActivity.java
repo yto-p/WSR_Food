@@ -24,6 +24,7 @@ import com.app.resaless.fragment.WishFragment;
 import com.app.resaless.item.FoodItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initFragments(){
-        searchFragment = SearchFragment.newInstance(this, frameLayout);
+        searchFragment = SearchFragment.newInstance();
         wishFragment = WishFragment.newInstance(this, frameLayout);
         itemsFragment = ItemsFragment.newInstance(this, frameLayout);
         profileFragment = ProfileFragment.newInstance(this, frameLayout);

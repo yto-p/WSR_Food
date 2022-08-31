@@ -26,5 +26,7 @@
     <string name="select_shipping_address">Select shipping address</string>
     <string name="title">Title</string>
     <string name="price">price</string>
+    <string name="result">Result:</string>
+    <string name="not_found">Not found</string>
 
 </resources>
